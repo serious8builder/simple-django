@@ -1,0 +1,18 @@
+[Unit]
+Description=gunicorn daemon for simple-dj
+After=network.target
+
+[Service]
+PIDFile=/tmp/simple-dj/simple-dj.pid
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/project/simple-dj
+#EnvironmentFile=/home/ubuntu/project/simple-api/.env
+ExecStartPre=/bin/bash -c 'echo "RUN SIMPLE-DJ"'
+ExecStart=/home/ubuntu/.pyenv/versions/simple-django/bin/gunicorn app.main:app
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
