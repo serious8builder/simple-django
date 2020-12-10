@@ -5,8 +5,11 @@ import sys
 
 
 def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'simple_dj.settings')
+
+    from dotenv import load_dotenv
+    load_dotenv(verbose=True, override=True)
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'simple_dj.settings.base')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
