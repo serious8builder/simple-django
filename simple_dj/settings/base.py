@@ -10,7 +10,7 @@ print('---> settings/base.py', os.getenv('DJANGO_SETTINGS_MODULE'), BASE_DIR, SE
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 # Application definition
 
